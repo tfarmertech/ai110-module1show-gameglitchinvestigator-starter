@@ -25,28 +25,39 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [x] **Game's purpose:** A Streamlit number-guessing game where the player tries to guess a secret number within a limited number of attempts. The game gives directional hints after each guess and tracks a running score across the session.
+- [x] **Bugs found:** The hint messages were backwards — guessing too high showed "Go HIGHER!" and guessing too low showed "Go LOWER!". The New Game button didn't reset `session_state.status`, so after winning or losing the game stayed frozen and required a full page refresh. The info banner always showed "1 and 100" even on Hard mode (which only goes to 50). On every even-numbered attempt, the secret number was silently converted to a string, which could break the comparison.
+- [x] **Fixes applied:** Moved all game logic into `logic_utils.py` and imported it in `app.py`. Fixed `check_guess` so "Too High" correctly maps to "Go LOWER!" and "Too Low" maps to "Go HIGHER!". Added `st.session_state.status = "playing"` to the New Game handler so the game resets properly. Updated the info banner to use the actual `{low}` and `{high}` range from the selected difficulty. Removed the even-attempt type conversion bug.
 
 ## 📸 Demo Walkthrough
 
 Describe your fixed game in numbered steps so a reader can follow along without watching a video:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Select a difficulty from the sidebar (Easy: 1–20, Normal: 1–100, Hard: 1–50)
+2. The game generates a secret number within the selected difficulty range
+3. Read the info banner to confirm the correct range for your difficulty
+4. Enter a number guess in the text box and click Submit Guess
+5. If your guess is too low, the game returns "Go HIGHER!"
+6. If your guess is too high, the game returns "Go LOWER!"
+7. Score updates after each guess — correct guesses earn points, wrong guesses deduct points
+8. If you switch difficulty mid-game, the secret number resets to a value within the new range
+9. Continue guessing until you either guess correctly or run out of attempts
+10. If you guess correctly, balloons appear and your final score is displayed
+11. Click New Game to reset — a new secret number generates within the current difficulty range
+12. If you run out of attempts, the secret number is revealed and the game ends
 
 **Screenshot** *(optional)*: <!-- Insert a screenshot of your fixed, winning game here -->
 
 ## 🧪 Test Results
 
 ```
-# Paste your pytest output here, e.g.:
-# pytest tests/
-# ========================= X passed in 0.XXs =========================
+============================= test session starts =============================
+tests/test_game_logic.py::test_winning_guess PASSED                      [ 20%]
+tests/test_game_logic.py::test_guess_too_high PASSED                     [ 40%]
+tests/test_game_logic.py::test_guess_too_low PASSED                      [ 60%]
+tests/test_game_logic.py::test_hint_too_high_not_too_low PASSED          [ 80%]
+tests/test_game_logic.py::test_hint_too_low_not_too_high PASSED          [100%]
+============================== 5 passed in 0.06s ==============================
 ```
 
 ## 🚀 Stretch Features

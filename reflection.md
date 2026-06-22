@@ -50,7 +50,7 @@ Streamlit reruns the entire script every time you interact with the page or clic
 - What is one habit or strategy from this project that you want to reuse in future labs or projects? Role based prompting. I told my claude to act as a senior developer and it broke everything down in a way I cold understand.
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 
-- What is one thing you would do differently next time you work with AI on a coding task? I accidently had it on bypass permissions instead of plan mode so it almost broke my program. Of course no harm was done since I can copy the original code from the repo, but it definetly was a scare.
+- What is one thing you would do differently next time you work with AI on a coding task? I accidently had it on bypass permissions instead of plan mode so it almost broke my program. Of course no harm was done since I can copy the original code from the repo, but it definetly was a scare. So moving forward, ill always make sure to double check permissions and monitor all changes.
 
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
 It helped me understand some of the limits and strengths of AI generated code. I learned how much role prompting can benefit a person in terms of learning and achieving a goal. Throughout this project, I found ways that can make my work during my internship even more efficient. Thank you CODE PATH! 

@@ -25,9 +25,9 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [x] **Game's purpose:** A Streamlit number-guessing game where the player tries to guess a secret number within a limited number of attempts. The game gives directional hints after each guess and tracks a running score across the session.
-- [x] **Bugs found:** The hint messages were backwards — guessing too high showed "Go HIGHER!" and guessing too low showed "Go LOWER!". The New Game button didn't reset `session_state.status`, so after winning or losing the game stayed frozen and required a full page refresh. The info banner always showed "1 and 100" even on Hard mode (which only goes to 50). On every even-numbered attempt, the secret number was silently converted to a string, which could break the comparison.
-- [x] **Fixes applied:** Moved all game logic into `logic_utils.py` and imported it in `app.py`. Fixed `check_guess` so "Too High" correctly maps to "Go LOWER!" and "Too Low" maps to "Go HIGHER!". Added `st.session_state.status = "playing"` to the New Game handler so the game resets properly. Updated the info banner to use the actual `{low}` and `{high}` range from the selected difficulty. Removed the even-attempt type conversion bug.
+-  **Game's purpose:** A Streamlit number-guessing game where the player tries to guess a secret number within a limited number of attempts. The game gives directional hints after each guess and tracks a running score across the session.
+- **Bugs found:** The hint messages were backwards — guessing too high showed "Go HIGHER!" and guessing too low showed "Go LOWER!". The New Game button didn't reset `session_state.status`, so after winning or losing the game stayed frozen and required a full page refresh. The info banner always showed "1 and 100" even on Hard mode (which only goes to 50). On every even-numbered attempt, the secret number was silently converted to a string, which could break the comparison.
+- **Fixes applied:** Moved all game logic into `logic_utils.py` and imported it in `app.py`. Fixed `check_guess` so "Too High" correctly maps to "Go LOWER!" and "Too Low" maps to "Go HIGHER!". Added `st.session_state.status = "playing"` to the New Game handler so the game resets properly. Updated the info banner to use the actual `{low}` and `{high}` range from the selected difficulty. Removed the even-attempt type conversion bug.
 
 ## 📸 Demo Walkthrough
 
